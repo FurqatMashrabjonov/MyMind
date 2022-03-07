@@ -11,64 +11,33 @@ import {
   NativeBaseProvider,
   extendTheme,
   VStack,
-  Code,
+  Code, ZStack, Box,
 } from "native-base";
-import NativeBaseIcon from "./components/NativeBaseIcon";
 
-// Define the config
-const config = {
-  useSystemColorMode: false,
-  initialColorMode: "dark",
-};
+import {StyleSheet} from "react-native";
 
-// extend the theme
-export const theme = extendTheme({ config });
+import MainComponent from "./src/Components/MainComponent";
+import HeaderComponent from "./src/Components/HeaderComponent";
+import CycleMenuComponent from "./src/Components/CycleMenuComponent";
+import ActionButton from 'react-native-action-button';
+import Icon from 'react-native-vector-icons/Ionicons';
+
 
 export default function App() {
   return (
     <NativeBaseProvider>
-      <Center
-        _dark={{ bg: "blueGray.900" }}
-        _light={{ bg: "blueGray.50" }}
-        px={4}
-        flex={1}
-      >
-        <VStack space={5} alignItems="center">
-          <NativeBaseIcon />
-          <Heading size="lg">Welcome to NativeBase</Heading>
-          <HStack space={2} alignItems="center">
-
-            <Text>Edit</Text>
-            <Code>App.js</Code>
-            <Text>and save to reload.</Text>
-            <Button onPress={() => console.log("hello world")}>Click Me</Button>
-          </HStack>
-          <Link href="https://docs.nativebase.io" isExternal>
-            <Text color="primary.500" underline fontSize={"xl"}>
-              Learn NativeBase
-            </Text>
-          </Link>
-          <ToggleDarkMode />
-        </VStack>
-      </Center>
+      <VStack space={4} alignItems="center">
+        <HeaderComponent />
+        <CycleMenuComponent/>
+        <MainComponent />
+      </VStack>
     </NativeBaseProvider>
   );
 }
-
-// Color Switch Component
-function ToggleDarkMode() {
-  const { colorMode, toggleColorMode } = useColorMode();
-  return (
-    <HStack space={2} alignItems="center">
-      <Text>Dark</Text>
-      <Switch
-        isChecked={colorMode === "light"}
-        onToggle={toggleColorMode}
-        aria-label={
-          colorMode === "light" ? "switch to dark mode" : "switch to light mode"
-        }
-      />
-      <Text>Light</Text>
-    </HStack>
-  );
-}
+const styles = StyleSheet.create({
+  actionButtonIcon: {
+    fontSize: 20,
+    height: 22,
+    color: 'white',
+  }
+})
