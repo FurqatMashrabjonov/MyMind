@@ -4,6 +4,7 @@ import {
   Link,
   HStack,
   Center,
+  Button,
   Heading,
   Switch,
   useColorMode,
@@ -36,9 +37,11 @@ export default function App() {
           <NativeBaseIcon />
           <Heading size="lg">Welcome to NativeBase</Heading>
           <HStack space={2} alignItems="center">
+
             <Text>Edit</Text>
             <Code>App.js</Code>
             <Text>and save to reload.</Text>
+            <Button onPress={() => console.log("hello world")}>Click Me</Button>
           </HStack>
           <Link href="https://docs.nativebase.io" isExternal>
             <Text color="primary.500" underline fontSize={"xl"}>
